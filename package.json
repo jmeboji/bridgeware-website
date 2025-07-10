@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "overrides": {
+    "date-fns": "3.6.0"
+  },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.4",
     "@hookform/resolvers": "^3.9.1",
