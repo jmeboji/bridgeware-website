@@ -9,6 +9,7 @@ import Image from "next/image"
 import './globals.css'
 import { useState } from "react"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import Link from "next/link";
 
 export default function HomePage() {
 
@@ -19,14 +20,16 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Image
-                src="/bridge_logo.svg"
-                alt="Bridgeware Logo"
-                width={180}
-                height={60}
-                className="object-contain"
-                priority
-              />
+              <Link href="/" passHref legacyBehavior>
+                <Image
+                  src="/bridge_logo.svg"
+                  alt="Bridgeware Logo"
+                  width={180}
+                  height={60}
+                  className="object-contain"
+                  priority
+                />
+              </Link>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="/" className="text-black hover:text-red-600 transition-colors">
@@ -45,9 +48,11 @@ export default function HomePage() {
                 Contact
               </a>
             </div>
-            <Button className="bg-red-600 hover:bg-red-700 text-white">
-              <a href="/request-callback">Get Started</a>
-            </Button>
+            <Link href="/request-callback" passHref legacyBehavior>
+              <Button className="bg-red-600 hover:bg-red-700 text-white">
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>

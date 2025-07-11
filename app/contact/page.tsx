@@ -13,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useState } from "react"
 import Image from "next/image"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import Link from "next/link";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -95,14 +96,16 @@ function ContactForm() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Image
-                src="/bridge_logo.svg"
-                alt="Bridgeware Logo"
-                width={180}
-                height={60}
-                className="object-contain"
-                priority
-              />
+              <Link href="/" passHref legacyBehavior>
+                <Image
+                  src="/bridge_logo.svg"
+                  alt="Bridgeware Logo"
+                  width={180}
+                  height={60}
+                  className="object-contain"
+                  priority
+                />
+              </Link>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="/" className="text-black hover:text-red-600 transition-colors">
@@ -121,7 +124,11 @@ function ContactForm() {
                 Contact
               </a>
             </div>
-            <Button className="bg-red-600 hover:bg-red-700 text-white">Get Started</Button>
+            <Link href="/request-callback" passHref legacyBehavior>
+              <Button className="bg-red-600 hover:bg-red-700 text-white">
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -215,44 +222,44 @@ function ContactForm() {
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
-                      <Input
+                        <Input
                         className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
                         placeholder="First Name"
-                        value={formData.firstName}
+                          value={formData.firstName}
                         onChange={e => handleInputChange('firstName', e.target.value)}
-                        required
-                      />
-                      <Input
+                          required
+                        />
+                        <Input
                         className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
                         placeholder="Last Name"
-                        value={formData.lastName}
+                          value={formData.lastName}
                         onChange={e => handleInputChange('lastName', e.target.value)}
-                        required
-                      />
+                          required
+                        />
                     </div>
-                    <Input
-                      type="email"
+                        <Input
+                          type="email"
                       className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
                       placeholder="Email Address"
-                      value={formData.email}
+                          value={formData.email}
                       onChange={e => handleInputChange('email', e.target.value)}
-                      required
-                    />
-                    <Input
+                          required
+                        />
+                        <Input
                       className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
                       placeholder="Subject"
                       value={formData.service}
                       onChange={e => handleInputChange('service', e.target.value)}
                       required
                     />
-                    <Textarea
+                      <Textarea
                       className="flex min-h-[80px] w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
                       placeholder="Your Message"
                       rows={4}
-                      value={formData.message}
+                        value={formData.message}
                       onChange={e => handleInputChange('message', e.target.value)}
-                      required
-                    />
+                        required
+                      />
                     <Button
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-4 py-2 w-full bg-red-600 hover:bg-red-700 text-white"
                       type="submit"
