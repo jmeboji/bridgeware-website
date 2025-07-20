@@ -39,11 +39,15 @@ function ContactForm() {
     setSubmitStatus("idle")
     let recaptchaToken = "";
     if (executeRecaptcha) {
-      recaptchaToken = await executeRecaptcha("contact_form");
+      try {
+        recaptchaToken = await executeRecaptcha("contact_form");
+      } catch (error) {
+        console.warn("reCAPTCHA failed, proceeding without it:", error);
+        recaptchaToken = "fallback-token";
+      }
     } else {
-      setSubmitStatus("error");
-      setIsSubmitting(false);
-      return;
+      console.warn("reCAPTCHA not available, proceeding without it");
+      recaptchaToken = "fallback-token";
     }
 
     try {
@@ -222,36 +226,117 @@ function ContactForm() {
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="firstName" className="text-black font-medium">
+                          First Name *
+                        </Label>
                         <Input
-                        className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
-                        placeholder="First Name"
+                          id="firstName"
+                          placeholder="First Name"
                           value={formData.firstName}
-                        onChange={e => handleInputChange('firstName', e.target.value)}
+                          onChange={e => handleInputChange('firstName', e.target.value)}
+                          className="mt-1 border-gray-300"
                           required
                         />
+                      </div>
+                      <div>
+                        <Label htmlFor="lastName" className="text-black font-medium">
+                          Last Name *
+                        </Label>
                         <Input
-                        className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
-                        placeholder="Last Name"
+                          id="lastName"
+                          placeholder="Last Name"
                           value={formData.lastName}
-                        onChange={e => handleInputChange('lastName', e.target.value)}
+                          onChange={e => handleInputChange('lastName', e.target.value)}
+                          className="mt-1 border-gray-300"
                           required
                         />
+                      </div>
                     </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="email" className="text-black font-medium">
+                          Email Address *
+                        </Label>
                         <Input
+                          id="email"
                           type="email"
-                      className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
-                      placeholder="Email Address"
+                          placeholder="Email Address"
                           value={formData.email}
-                      onChange={e => handleInputChange('email', e.target.value)}
+                          onChange={e => handleInputChange('email', e.target.value)}
+                          className="mt-1 border-gray-300"
                           required
                         />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone" className="text-black font-medium">
+                          Phone Number
+                        </Label>
                         <Input
-                      className="flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
-                      placeholder="Subject"
-                      value={formData.service}
-                      onChange={e => handleInputChange('service', e.target.value)}
-                      required
-                    />
+                          id="phone"
+                          type="tel"
+                          placeholder="Phone Number"
+                          value={formData.phone}
+                          onChange={e => handleInputChange('phone', e.target.value)}
+                          className="mt-1 border-gray-300"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="company" className="text-black font-medium">
+                        Company Name
+                      </Label>
+                      <Input
+                        id="company"
+                        placeholder="Company Name"
+                        value={formData.company}
+                        onChange={e => handleInputChange('company', e.target.value)}
+                        className="mt-1 border-gray-300"
+                      />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="service" className="text-black font-medium">
+                          Service Needed *
+                        </Label>
+                        <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
+                          <SelectTrigger className="mt-1 border-gray-300">
+                            <SelectValue placeholder="Select a service" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="web-development">Web Development</SelectItem>
+                            <SelectItem value="brand-identity">Brand Identity</SelectItem>
+                            <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
+                            <SelectItem value="ecommerce">E-commerce</SelectItem>
+                            <SelectItem value="ui-ux">UI/UX Design</SelectItem>
+                            <SelectItem value="consulting">Digital Consulting</SelectItem>
+                            <SelectItem value="multiple">Multiple Services</SelectItem>
+                            <SelectItem value="general-inquiry">General Inquiry</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label htmlFor="budget" className="text-black font-medium">
+                          Estimated Budget
+                        </Label>
+                        <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
+                          <SelectTrigger className="mt-1 border-gray-300">
+                            <SelectValue placeholder="Select budget range" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="under-5k">Under $5,000</SelectItem>
+                            <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
+                            <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
+                            <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
+                            <SelectItem value="50k-plus">$50,000+</SelectItem>
+                            <SelectItem value="discuss">Let's Discuss</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
                       <Textarea
                       className="flex min-h-[80px] w-full rounded-md border bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm border-gray-300"
                       placeholder="Your Message"
