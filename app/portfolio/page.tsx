@@ -3,54 +3,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Image from "next/image"
-import Link from "next/link";
 
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" passHref legacyBehavior>
-                <Image
-                  src="/bridge_logo.svg"
-                  alt="Bridgeware Logo"
-                  width={180}
-                  height={60}
-                  className="object-contain"
-                  priority
-                />
-              </Link>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="/" className="text-black hover:text-red-600 transition-colors">
-                Home
-              </a>
-              <a href="/services" className="text-black hover:text-red-600 transition-colors">
-                Services
-              </a>
-              <a href="/about" className="text-black hover:text-red-600 transition-colors">
-                About
-              </a>
-              <a href="/portfolio" className="text-red-600 font-medium">
-                Portfolio
-              </a>
-              <a href="/contact" className="text-black hover:text-red-600 transition-colors">
-                Contact
-              </a>
-            </div>
-            <Link href="/request-callback" passHref legacyBehavior>
-              <Button className="bg-red-600 hover:bg-red-700 text-white">
-                Get Started
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -288,56 +244,18 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-black text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-2xl font-bold mb-4">
-                BRIDGEWARE<span className="text-red-600">.</span>
-              </div>
-              <p className="text-gray-400">Creating digital excellence through innovative design and development.</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Web Development</li>
-                <li>Brand Identity</li>
-                <li>Digital Marketing</li>
-                <li>E-commerce</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>About Us</li>
-                <li>Our Work</li>
-                <li>Careers</li>
-                <li>Contact</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Connect</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Twitter</li>
-                <li>LinkedIn</li>
-                <li>Instagram</li>
-                <li>Dribbble</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 BRIDGEWARE Agency. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
 
-// Project Card Component
-function ProjectCard({ project }) {
+type Project = {
+  title: string
+  category: string
+  description: string
+  color: string
+}
+
+function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="border-0 shadow-lg hover:shadow-xl transition-all cursor-pointer group overflow-hidden">
       <div className={`h-56 ${project.color} rounded-t-lg flex items-center justify-center relative overflow-hidden`}>
@@ -373,8 +291,7 @@ function ProjectCard({ project }) {
   )
 }
 
-// Project Data
-const projects = [
+const projects: Project[] = [
   {
     title: "NexaTech Rebrand",
     category: "Brand Identity",
