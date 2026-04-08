@@ -13,7 +13,7 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Web Development</li>
-              <li>Brand Identity</li>
+              <li>AI Automation</li>
               <li>Digital Marketing</li>
               <li>E-commerce</li>
             </ul>

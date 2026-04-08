@@ -263,7 +263,7 @@ function ContactForm() {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="web-development">Web Development</SelectItem>
-                            <SelectItem value="brand-identity">Brand Identity</SelectItem>
+                            <SelectItem value="ai-automation">AI Automation</SelectItem>
                             <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
                             <SelectItem value="ecommerce">E-commerce</SelectItem>
                             <SelectItem value="ui-ux">UI/UX Design</SelectItem>

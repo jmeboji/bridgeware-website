@@ -58,9 +58,9 @@ export default function HomePage() {
                 features: ["Responsive Design", "Performance Optimized", "SEO Ready"],
               },
               {
-                title: "Brand Identity",
-                description: "Complete brand identity design including logos, guidelines, and visual systems.",
-                features: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+                title: "AI Automation",
+                description: "End-to-end AI automation solutions that eliminate manual work and accelerate business growth.",
+                features: ["Workflow Automation", "AI Chatbots", "Smart Integrations"],
               },
               {
                 title: "Digital Marketing",
@@ -155,7 +155,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "E-commerce Platform", category: "Web Development", color: "bg-red-100" },
-              { title: "Brand Identity", category: "Design", color: "bg-black" },
+              { title: "AI Automation", category: "AI Automation", color: "bg-black" },
               { title: "Mobile App", category: "Development", color: "bg-red-600" },
               { title: "Marketing Campaign", category: "Digital Marketing", color: "bg-gray-800" },
               { title: "Corporate Website", category: "Web Design", color: "bg-red-200" },
@@ -172,15 +172,9 @@ export default function HomePage() {
                       priority
                     />
                   </div>
-                ) : project.title === "Brand Identity" ? (
-                  <div className="h-48 relative rounded-t-lg overflow-hidden">
-                    <Image
-                      src="/brand_icon.svg"
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
+                ) : project.title === "AI Automation" ? (
+                  <div className={`h-48 bg-black rounded-t-lg flex items-center justify-center`}>
+                    <span className="text-2xl font-bold text-white">AI</span>
                   </div>
                 ) : project.title === "Mobile App" ? (
                   <div className="h-48 relative rounded-t-lg overflow-hidden">

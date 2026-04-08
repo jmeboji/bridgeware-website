@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle, Zap, Clock, BarChart, Users, Layers } from "lucide-react"
+import { ArrowRight, CheckCircle, Zap, Clock, BarChart, Users, Layers, Bot, Brain, Workflow, GitMerge } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -17,7 +17,7 @@ export default function ServicesPage() {
               <span className="text-red-600">Services</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Comprehensive digital solutions tailored to your business needs. From web development to brand identity,
+              Comprehensive digital solutions tailored to your business needs. From web development to AI automation,
               we've got you covered.
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function ServicesPage() {
           <Tabs defaultValue="web-development" className="w-full">
             <TabsList className="grid grid-cols-3 md:grid-cols-6 mb-12">
               <TabsTrigger value="web-development">Web Dev</TabsTrigger>
-              <TabsTrigger value="brand-identity">Branding</TabsTrigger>
+              <TabsTrigger value="ai-automation">AI Automation</TabsTrigger>
               <TabsTrigger value="digital-marketing">Marketing</TabsTrigger>
               <TabsTrigger value="ecommerce">E-commerce</TabsTrigger>
               <TabsTrigger value="ui-ux">UI/UX</TabsTrigger>
@@ -96,22 +96,22 @@ export default function ServicesPage() {
               </div>
             </TabsContent>
 
-            <TabsContent value="brand-identity" className="mt-6">
+            <TabsContent value="ai-automation" className="mt-6">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-3xl font-bold text-black mb-6">Brand Identity</h3>
+                  <h3 className="text-3xl font-bold text-black mb-6">AI Automation</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    We create distinctive brand identities that resonate with your audience and set you apart from the
-                    competition.
+                    We design and implement end-to-end AI automation solutions that eliminate manual work, reduce costs,
+                    and unlock new levels of efficiency across your entire business.
                   </p>
                   <ul className="space-y-4 mb-8">
                     {[
-                      "Logo design and development",
-                      "Brand strategy and positioning",
-                      "Visual identity systems",
-                      "Brand guidelines and documentation",
-                      "Brand messaging and voice",
-                      "Brand collateral design",
+                      "Business process automation",
+                      "AI chatbot & virtual assistant development",
+                      "Automated reporting & dashboards",
+                      "API & third-party tool integrations",
+                      "AI-powered lead generation",
+                      "Custom automation workflows",
                     ].map((feature, index) => (
                       <li key={index} className="flex items-start">
                         <CheckCircle className="h-6 w-6 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -126,20 +126,24 @@ export default function ServicesPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-red-600 rounded-lg p-6 text-white">
-                    <h4 className="text-xl font-bold mb-2">Brand Strategy</h4>
-                    <p className="text-sm">Defining your unique position in the market</p>
+                    <div className="mb-3"><Bot className="h-6 w-6" /></div>
+                    <h4 className="text-xl font-bold mb-2">AI Chatbots</h4>
+                    <p className="text-sm">Intelligent virtual assistants that engage and convert</p>
                   </div>
                   <div className="bg-black rounded-lg p-6 text-white">
-                    <h4 className="text-xl font-bold mb-2">Visual Identity</h4>
-                    <p className="text-sm">Creating your distinctive visual language</p>
+                    <div className="mb-3"><Workflow className="h-6 w-6" /></div>
+                    <h4 className="text-xl font-bold mb-2">Workflow Automation</h4>
+                    <p className="text-sm">Eliminate repetitive tasks across your operations</p>
                   </div>
                   <div className="bg-gray-800 rounded-lg p-6 text-white">
-                    <h4 className="text-xl font-bold mb-2">Brand Voice</h4>
-                    <p className="text-sm">Crafting your unique communication style</p>
+                    <div className="mb-3"><GitMerge className="h-6 w-6" /></div>
+                    <h4 className="text-xl font-bold mb-2">Smart Integrations</h4>
+                    <p className="text-sm">Connect your tools and data into one seamless system</p>
                   </div>
                   <div className="bg-red-500 rounded-lg p-6 text-white">
-                    <h4 className="text-xl font-bold mb-2">Brand Experience</h4>
-                    <p className="text-sm">Designing memorable customer interactions</p>
+                    <div className="mb-3"><Brain className="h-6 w-6" /></div>
+                    <h4 className="text-xl font-bold mb-2">AI Lead Generation</h4>
+                    <p className="text-sm">Automated pipelines that find and nurture prospects</p>
                   </div>
                 </div>
               </div>

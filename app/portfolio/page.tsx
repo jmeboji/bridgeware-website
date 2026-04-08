@@ -31,7 +31,7 @@ export default function PortfolioPage() {
               <TabsList className="grid grid-cols-3 md:grid-cols-6">
                 <TabsTrigger value="all">All</TabsTrigger>
                 <TabsTrigger value="web">Web</TabsTrigger>
-                <TabsTrigger value="branding">Branding</TabsTrigger>
+                <TabsTrigger value="ai-automation">AI Automation</TabsTrigger>
                 <TabsTrigger value="mobile">Mobile</TabsTrigger>
                 <TabsTrigger value="marketing">Marketing</TabsTrigger>
                 <TabsTrigger value="ecommerce">E-commerce</TabsTrigger>
@@ -56,10 +56,10 @@ export default function PortfolioPage() {
               </div>
             </TabsContent>
 
-            <TabsContent value="branding" className="mt-6">
+            <TabsContent value="ai-automation" className="mt-6">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects
-                  .filter((project) => project.category === "Brand Identity")
+                  .filter((project) => project.category === "AI Automation")
                   .map((project, index) => (
                     <ProjectCard key={index} project={project} />
                   ))}
@@ -111,39 +111,39 @@ export default function PortfolioPage() {
             <div className="bg-black rounded-lg h-96 flex items-center justify-center">
               <div className="text-center">
                 <div className="w-32 h-32 bg-red-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-white text-4xl font-bold">NX</span>
+                  <span className="text-white text-4xl font-bold">AI</span>
                 </div>
-                <p className="text-white text-lg">NexaTech Rebrand</p>
+                <p className="text-white text-lg">PulseLogic Automation</p>
               </div>
             </div>
             <div>
-              <Badge className="bg-red-600 hover:bg-red-700 mb-4">Brand Identity</Badge>
-              <h3 className="text-3xl font-bold text-black mb-4">NexaTech Complete Rebrand</h3>
+              <Badge className="bg-red-600 hover:bg-red-700 mb-4">AI Automation</Badge>
+              <h3 className="text-3xl font-bold text-black mb-4">PulseLogic End-to-End Automation</h3>
               <p className="text-lg text-gray-600 mb-6">
-                NexaTech, a leading tech company, approached us to reimagine their brand identity as they expanded into
-                new markets. Our challenge was to create a modern, versatile identity that would resonate with their
-                global audience while maintaining their core values.
+                PulseLogic, a fast-growing SaaS company, engaged us to eliminate the manual bottlenecks slowing their
+                operations. Our challenge was to design and deploy a fully automated pipeline covering lead capture,
+                onboarding, and customer support — without disrupting their existing systems.
               </p>
               <div className="space-y-4 mb-8">
                 <div>
                   <h4 className="font-bold text-black">The Challenge</h4>
                   <p className="text-gray-600">
-                    Transform a dated brand into a modern identity that appeals to both enterprise clients and
-                    tech-savvy consumers.
+                    Replace a fragmented stack of manual processes and disconnected tools with a unified, intelligent
+                    automation system that could scale with rapid business growth.
                   </p>
                 </div>
                 <div>
                   <h4 className="font-bold text-black">Our Approach</h4>
                   <p className="text-gray-600">
-                    We conducted extensive market research, stakeholder interviews, and competitive analysis to develop
-                    a comprehensive brand strategy.
+                    We mapped every manual touchpoint across their sales and operations teams, then built custom
+                    automation workflows and an AI chatbot integrated directly into their CRM and helpdesk platforms.
                   </p>
                 </div>
                 <div>
                   <h4 className="font-bold text-black">The Results</h4>
                   <p className="text-gray-600">
-                    The rebrand led to a 40% increase in brand recognition and helped secure three major enterprise
-                    clients within the first quarter.
+                    The automation suite reduced manual workload by 70%, cut customer response times from 6 hours to
+                    under 4 minutes, and generated a 35% uplift in qualified leads within the first two months.
                   </p>
                 </div>
               </div>
@@ -175,9 +175,9 @@ export default function PortfolioPage() {
               },
               {
                 quote:
-                  "Working with the team at BRIDGEWARE. was a game-changer for our brand. They understood our vision perfectly and delivered a brand identity that truly represents who we are.",
+                  "BRIDGEWARE. automated our entire lead nurturing process and built us an AI assistant that handles 80% of customer queries without human intervention. The efficiency gains have been extraordinary.",
                 author: "Michael Chen",
-                position: "Marketing Director, Elevate",
+                position: "Operations Director, PulseLogic",
                 rating: 5,
               },
               {
@@ -279,7 +279,7 @@ function ProjectCard({ project }: { project: Project }) {
       <CardContent className="p-6">
         <Badge
           className={`mb-2 ${
-            project.category === "Brand Identity" ? "bg-red-600 hover:bg-red-700" : "bg-black hover:bg-gray-800"
+            project.category === "AI Automation" ? "bg-red-600 hover:bg-red-700" : "bg-black hover:bg-gray-800"
           }`}
         >
           {project.category}
@@ -293,10 +293,10 @@ function ProjectCard({ project }: { project: Project }) {
 
 const projects: Project[] = [
   {
-    title: "NexaTech Rebrand",
-    category: "Brand Identity",
+    title: "PulseLogic Automation",
+    category: "AI Automation",
     description:
-      "Complete brand identity redesign for a leading technology company, including logo, visual system, and brand guidelines.",
+      "End-to-end automation suite for a fast-growing SaaS company, covering lead capture, onboarding workflows, and AI-powered customer support.",
     color: "bg-red-600",
   },
   {
@@ -349,10 +349,10 @@ const projects: Project[] = [
     color: "bg-gray-800",
   },
   {
-    title: "Artisan Goods",
-    category: "Brand Identity",
+    title: "ClarityOps AI",
+    category: "AI Automation",
     description:
-      "Brand identity and packaging design for a handcrafted goods company, emphasizing authenticity and craftsmanship.",
+      "Custom AI automation platform for a professional services firm, streamlining client reporting, document processing, and internal approvals.",
     color: "bg-red-200",
   },
 ]
